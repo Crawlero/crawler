@@ -2,7 +2,7 @@ import asyncio
 from aiokafka import AIOKafkaProducer
 import json
 
-KAFKA_TOPIC = "crawl_jobs"
+KAFKA_INPUT_TOPIC = "crawl_inputs"
 KAFKA_BOOTSTRAP_SERVERS = "localhost:9093"
 
 
@@ -57,7 +57,7 @@ async def send_job():
                 ],
             }
         }
-        await producer.send_and_wait(KAFKA_TOPIC, job)
+        await producer.send_and_wait(KAFKA_INPUT_TOPIC, job)
         print("Job sent to Kafka")
     finally:
         await producer.stop()

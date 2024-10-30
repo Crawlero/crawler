@@ -1,5 +1,5 @@
 {
-  description = "Development environment for Python and Go";
+  description = "Development environment for Python";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -17,7 +17,6 @@
             pkgs.python3
             pkgs.python3Packages.pip
             pkgs.python3Packages.virtualenv
-            pkgs.go
             pkgs.python312Packages.numpy
             pkgs.stdenv.cc.cc.lib
             pkgs.playwright
@@ -25,8 +24,6 @@
           ];
 
           shellHook = ''
-            echo "Welcome to the Python and Go development environment!"
-            # Create a virtual environment if it doesn't exist
             if [ ! -d ".venv" ]; then
               python -m venv .venv
             fi
